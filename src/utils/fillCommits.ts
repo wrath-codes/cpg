@@ -1,16 +1,10 @@
-export interface Commit {
-    hash: string;
-    date: string;
-    message: string;
-    authorName: string;
-    authorEmail: string;
-}
+import * as dayjs from 'dayjs';
+import * as relativeTime from 'dayjs/plugin/relativeTime';
 
-export interface Log {
-    label: string;
-    detail: string;
-    description: string;
-}
+import { Commit } from "../interfaces/Commit";
+import { Log } from "../interfaces/Log";
+
+dayjs.extend(relativeTime); // Extend dayjs with the relativeTime plugin
 
 export const fillCommits = (listOfCommits: Commit[]) => {
     let logs: Log[] = [];
@@ -20,8 +14,9 @@ export const fillCommits = (listOfCommits: Commit[]) => {
         }
         logs.push({
             'label': element.message,
-            'detail': timeSince(new Date(element.date)) + " by " + (element.authorName || element.authorEmail) + " | " + element.date,
-            'description': element.hash.substring(0, 7)
+            'detail': dayjs(new Date(element.date)).fromNow() + " by "
+                + (element.author_name || element.author_email) + " | " + element.date,
+            'description': element.hash.substring(0, 10)
         });
     }, this);
     return logs;
