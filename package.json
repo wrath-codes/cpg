@@ -16,6 +16,10 @@
       {
         "command": "cpg.logAll",
         "title": "CPG: Log All"
+      },
+      {
+        "command": "cpg.logCurrent",
+        "title": "CPG: Log Current"
       }
     ]
   },

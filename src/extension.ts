@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 
 import { logAll } from "./commands/logAll";
+import { logCurrent } from "./commands/logCurrent";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -20,6 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 
 	logAll(outputChannel, context);
+	logCurrent(outputChannel, context);
 }
 
 // This method is called when your extension is deactivated

@@ -1,5 +1,6 @@
 import { ExtensionContext, OutputChannel, commands, window } from "vscode";
 
+import { appendOutput } from "../utils/appendOutput";
 import { fillCommits } from "../utils/fillCommits";
 import { git } from '../options/gitOptions';
 import { showOutput } from "../utils/showOutput";
@@ -7,7 +8,6 @@ import { showSidebarDiff } from "../utils/showSideBarDiff";
 
 export function logAll(outputChanel: OutputChannel, context: ExtensionContext) {
     const doLogAll = commands.registerCommand('cpg.logAll', () => {
-        outputChanel.appendLine('Log All');
         git.log({}, function (err, log) {
             if (err) {
                 showOutput(err.message, outputChanel);
