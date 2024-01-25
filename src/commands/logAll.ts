@@ -1,6 +1,5 @@
 import { ExtensionContext, OutputChannel, commands, window } from "vscode";
 
-import { appendOutput } from "../utils/appendOutput";
 import { fillCommits } from "../utils/fillCommits";
 import { git } from '../options/gitOptions';
 import { showOutput } from "../utils/showOutput";
