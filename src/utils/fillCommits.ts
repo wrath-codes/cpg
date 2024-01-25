@@ -1,8 +1,9 @@
+import { Commit } from "../interfaces/Commit";
 import { Log } from "../interfaces/Log";
 import { timeSince } from "./timeSince";
 
 // TODO: Get correct type for listOfCommits
-export const fillCommits = (listOfCommits: any) => {
+export const fillCommits = (listOfCommits: Commit[]) => {
     let logs: Log[] = [];
     listOfCommits.forEach(function (element: any) {
         if (!element.hasOwnProperty("hash")) {

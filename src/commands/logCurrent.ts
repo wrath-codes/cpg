@@ -1,5 +1,6 @@
 import { ExtensionContext, OutputChannel, commands, window } from "vscode";
 
+import { Commit } from "../interfaces/Commit";
 import { fillCommits } from "../utils/fillCommits";
 import { git } from "../options/gitOptions";
 import { showOutput } from "../utils/showOutput";
@@ -13,7 +14,9 @@ export function logCurrent(outputChanel: OutputChannel, context: ExtensionContex
                 showOutput(err.message, outputChanel);
                 return;
             }
-            const logs = fillCommits(log.all);
+
+            // ...
+            const logs = fillCommits([...log.all].slice() as Commit[]);
             window.showQuickPick(logs, {
                 matchOnDescription: true,
                 matchOnDetail: true,
